@@ -5,7 +5,7 @@
 
 using namespace std;
 
-
+/*
 void Tablica::Tworz_Tablice(int rozmiar)
 {
 	tab = new double[rozmiar];
@@ -24,7 +24,7 @@ void Tablica::Tworz_Tablice(int rozmiar)
 		//cout << *tab_rand;
 		tab[i] = *tab_rand;
 	}
-}
+}*/
 
 void Tablica::Tworz_Tablice2(int rozmiar)
 {
@@ -40,7 +40,7 @@ void Tablica::Tworz_Tablice2(int rozmiar)
 	{
 		for (int j = 0; j < rozmiar; j++)
 		{
-			tab2[i][j] = rand();
+			tab2[i][j] = rand()%rozmiar+1;
 			cout << tab2[i][j]<<" ";
 		}
 		cout << endl;
@@ -52,4 +52,22 @@ void Tablica::Usun_Tablice(double* tab, double* tab_rand)
 {
 	delete[] tab;
 	delete[] tab_rand;
+}
+
+void Tablica::Usun_Tablice2(double** tab)
+{
+	for (int i = 0; i < 100; i++)
+	{
+		delete[] tab[i];
+	}
+	delete[] tab;
+}
+
+void Tablica::Przepisz_wiersz(double** tab2,double* tab,int roz,int wiersz)
+{
+	for (int j = 0; j < roz; j++)
+	{
+		tab[j] = tab2[wiersz][j];
+	}
+	
 }

@@ -1,2 +1,7 @@
-﻿  Tablica.cpp
+﻿  pch.cpp
+  Tablica.cpp
+  Zadanie.cpp
+f:\projekty\zadanie\zadanie\zadanie.cpp(9): warning C4244: "inicjowanie": konwersja z "double" do "int", możliwa utrata danych
+f:\projekty\zadanie\zadanie\zadanie.cpp(43): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
+  Generowanie kodu...
   Zadanie.vcxproj -> F:\Projekty\Zadanie\Debug\Zadanie.exe

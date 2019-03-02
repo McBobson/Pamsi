@@ -18,13 +18,21 @@ public:
 	double* tab;
 	double* tab_rand;
 	double** tab2;
+
+
 	int licznik;
 
-	void Tworz_Tablice(int);
+	//void Tworz_Tablice(int);
 	
 	void Usun_Tablice(double*, double*);
 
 	void Tworz_Tablice2(int);
+
+	void Usun_Tablice2(double**);
+
+	void Przepisz_wiersz(double**,double*, int, int);
+
+
 
 };
 
