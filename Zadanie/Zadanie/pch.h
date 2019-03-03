@@ -12,6 +12,7 @@
 #include "Tablica.h"
 #include <ctime>
 #include <iostream>
+#include <ctime>
 // TODO: w tym miejscu dodaj nagłówki, które mają być wstępnie kompilowane
 
 #endif //PCH_H

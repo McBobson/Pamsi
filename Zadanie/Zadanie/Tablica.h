@@ -10,32 +10,29 @@ class Tablica {
 
 	int rozmiar;
 
-	//double* tab;
-	//double* tab_rand;
-
 public:
 
 	double* tab;
-	double* tab_rand;
-	double** tab2;
-
 
 	int licznik;
-
-	//void Tworz_Tablice(int);
 	
-	void Usun_Tablice(double*, double*);
+	void Usun_Tablice(double*);
 
-	void Tworz_Tablice2(int);
+	void Przepisz_wiersz(double*,double*, int);
 
-	void Usun_Tablice2(double**);
+	void Tworz_Tablice_Wiktor(int);
 
-	void Przepisz_wiersz(double**,double*, int, int);
+	void Wypelnij_Tablice(double*);
 
-
-
+	//Tablica(int);
+	   
 };
 
-
+/*
+Tablica::Tablica(int rozmiar)
+{
+	tab = new double[rozmiar];
+}
+*/
 
 #endif

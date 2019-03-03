@@ -2,6 +2,8 @@
 
 using namespace std;
 
+double* pom;
+
 void Quick_Sort(double tab[],int poczatek,int koniec)
 {
 	int i = poczatek;
@@ -27,9 +29,57 @@ void Quick_Sort(double tab[],int poczatek,int koniec)
 	if (koniec > i) Quick_Sort(tab, i, koniec);
 }
 
-void Scalanie(double)
+void Scalanie(double tab[], int poczatek, int srodek, int koniec)
 {
+	//double* pom;
+	//pom = new double[koniec + 1];
 
+	for (int i = poczatek; i <= koniec; i++)
+	{
+		pom[i] = tab[i];
+	}
+
+	int k = srodek + 1;
+	int j = poczatek;
+
+	for (int i = poczatek; i <= koniec; i++)
+	{
+		if (j <= srodek)
+		{
+			if (k <= koniec)
+			{
+				if (pom[k] < pom[j])
+				{
+					tab[i] = pom[k++];
+				}
+				else
+				{
+					tab[i] = pom[j++];
+				}
+			}
+			else
+			{
+				tab[i] = pom[j++];
+			}
+		}
+		else
+		{
+			tab[i] = pom[k++];
+		}
+	}
+}
+
+void Dzielenie(double tab[], int poczatek, int koniec)
+{
+	int srodek = (poczatek + koniec) / 2;
+
+	if (tab[poczatek] != tab[koniec])
+	{
+		Dzielenie(tab, poczatek, srodek);
+		Dzielenie(tab, srodek + 1, koniec);
+	}
+
+	Scalanie(tab, poczatek, srodek, koniec);
 }
 
 void Introspekcja(double)
@@ -39,56 +89,48 @@ void Introspekcja(double)
 
 int main()
 {
-
 	srand(time(NULL));
 
 	int rozmiar;
 	cout << "Podaj rozmiar tablicy" << endl;
 	cin >> rozmiar;
+	pom = new double[rozmiar];
 
 	Tablica tablica;
+	double* tab1 = new double[rozmiar];
+	double* tab2 = new double[rozmiar];
+	double* tab3 = new double[rozmiar];
 
+	tablica.Tworz_Tablice_Wiktor(rozmiar);
+	tablica.Przepisz_wiersz(tab1, tablica.tab, rozmiar);
+	tablica.Przepisz_wiersz(tab2, tablica.tab, rozmiar); // Tworzenie kopi tablicy ktore beda uzywane do testow
+	tablica.Przepisz_wiersz(tab3, tablica.tab, rozmiar);
+	   	  
+	clock_t start;
+	double dlugosc;
+	start = clock();
 
-	/*// 1 SPOSOB ///////////////////////////////////////////////////////
-	tablica.Tworz_Tablice(rozmiar);
-	
-	for (int i = 0; i < rozmiar; i++)
+	for (int k = 0; k < 100; k++)
 	{
-		cout << *(tablica.tab + i) << " ";
+		Quick_Sort(tab1, 0, rozmiar - 1);
 	}
-	cout << "KOLEJNE TESTY" << endl;
 
-	cout << tablica.tab[0] << " " << tablica.tab[1]<<endl;
+	tablica.Usun_Tablice(tab1); // Zwolnienie pamięci
 
-	tablica.Usun_Tablice(tablica.tab, tablica.tab_rand);
-	cout << "Usunalem tablice" << endl;
+	dlugosc = (clock() - start) / (double)CLOCKS_PER_SEC;
+	cout << "Dlugosc dzialania sortowania quick: " << dlugosc << endl;
 
-	cout << "UWAGA!!!!!" << endl;*/
+	start = clock();
 
-	// 2 SPOSOB /////////////////////////////////////////////////////////
-
-	tablica.Tworz_Tablice2(rozmiar);
-	cout << endl << endl;
-	
-	//tablica.Przepisz_wiersz(tablica.tab2, tablica.tab, rozmiar, 0);
-	
-
-	/*
-	int *tab;
-	tab = new int[rozmiar];
-
-	for (int i = 0; i < rozmiar; i++)
+	for (int k = 0; k < 100; k++)
 	{
-		tab[i] = rand();
-		cout << tab[i] << " ";
-	}
-	cout << endl;
+		Dzielenie(tab2, 0, rozmiar - 1);
 
-	Quick_Sort(tab, 0, rozmiar - 1);
-
-	for (int i = 0; i < rozmiar; i++)
-	{
-		cout << tab[i] << " ";
 	}
-	*/ // dzialajacy algorytm quicsort
+	tablica.Usun_Tablice(tab2); // Zwolnienie pamięci
+
+	dlugosc = (clock() - start) / (double)CLOCKS_PER_SEC;
+	cout << "Dlugosc dzialania sortowania merge: " << dlugosc << endl;
+
+
 }
