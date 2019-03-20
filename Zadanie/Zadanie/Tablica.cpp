@@ -5,12 +5,14 @@
 
 using namespace std;
 
-void Tablica::Usun_Tablice(double* tab)
+template<typename T>
+void Tablica<T>::Usun_Tablice(T* tab)
 {
 	delete[] tab;
 }
 
-void Tablica::Przepisz_wiersz(double *tab,double* tab2,int roz)
+template<typename T>
+void Tablica<T>::Przepisz_wiersz(T *tab,T* tab2,int roz)
 {
 	for (int j = 0; j < roz; j++)
 	{
@@ -19,9 +21,10 @@ void Tablica::Przepisz_wiersz(double *tab,double* tab2,int roz)
 	
 }
 
-void Tablica::Tworz_Tablice_Wiktor(int rozmiar)
+template<typename T>
+void Tablica<T>::Tworz_Tablice(int rozmiar)
 {
-	tab = new double[rozmiar];
+	tab = new T[rozmiar];
 
 
 	for (int i = 0; i < rozmiar; i++)
@@ -30,7 +33,20 @@ void Tablica::Tworz_Tablice_Wiktor(int rozmiar)
 	}
 }
 
-void Tablica::Wypelnij_Tablice(double *tab)
+template<typename T>
+void Tablica<T>::Tworz_Tablice_Pom(int rozmiar)
+{
+	tab1 = new T[rozmiar];
+}
+
+template<typename T>
+void Tablica<T>::Tworz_Tablice_PomTest(int rozmiar)
+{
+	tabpom = new T[rozmiar];
+}
+
+template<typename T>
+void Tablica<T>::Wypelnij_Tablice(T *tab)
 {
 	for (int i = 0; i < rozmiar; i++)
 	{
@@ -38,3 +54,6 @@ void Tablica::Wypelnij_Tablice(double *tab)
 	}
 }
 
+template class Tablica<int>;
+template class Tablica<double>;
+template class Tablica<float>;

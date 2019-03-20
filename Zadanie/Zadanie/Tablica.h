@@ -5,24 +5,30 @@
 
 using namespace std;
 
-
+template<typename T>
 class Tablica {
 
 	int rozmiar;
 
 public:
 
-	double* tab;
+	T* tab;
+	T* tab1;
+	T* tabpom;
 
 	int licznik;
 	
-	void Usun_Tablice(double*);
+	void Usun_Tablice(T*);
 
-	void Przepisz_wiersz(double*,double*, int);
+	void Przepisz_wiersz(T*,T*, int);
 
-	void Tworz_Tablice_Wiktor(int);
+	void Tworz_Tablice(int);
 
-	void Wypelnij_Tablice(double*);
+	void Wypelnij_Tablice(T*);
+
+	void Tworz_Tablice_Pom(int);
+
+	void Tworz_Tablice_PomTest(int);
 
 	//Tablica(int);
 	   

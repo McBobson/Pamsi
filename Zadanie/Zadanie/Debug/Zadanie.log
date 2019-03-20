@@ -1,4 +1,1 @@
-﻿  Zadanie.cpp
-f:\projekty\zadanie\zadanie\zadanie.cpp(11): warning C4244: "inicjowanie": konwersja z "double" do "int", możliwa utrata danych
-f:\projekty\zadanie\zadanie\zadanie.cpp(92): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
-  Zadanie.vcxproj -> F:\Projekty\Zadanie\Debug\Zadanie.exe
+﻿  Zadanie.vcxproj -> F:\Projekty\Zadanie\Debug\Zadanie.exe

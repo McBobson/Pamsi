@@ -13,6 +13,7 @@
 #include <ctime>
 #include <iostream>
 #include <ctime>
+#include "sortowanie.h"
 // TODO: w tym miejscu dodaj nagłówki, które mają być wstępnie kompilowane
 
 #endif //PCH_H
