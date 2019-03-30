@@ -34,9 +34,6 @@ void Sortowanie<T>::Quick_Sort(T tab[], int poczatek, int koniec)
 template<typename T>
 void Sortowanie<T>::Scalanie(T tab[],T pom[], int poczatek, int srodek, int koniec)
 {
-	
-//	pom = new T[koniec + 1];
-
 	for (int i = poczatek; i <= koniec; i++)
 	{
 		pom[i] = tab[i];
@@ -88,22 +85,93 @@ void Sortowanie<T>::Dzielenie(T tab[],T pom[], int poczatek, int koniec)
 
 template<typename T>
 void Sortowanie<T>::Shell(T tab[], int rozmiar)
-{/*
-	for (int gap = rozmiar / 2; gap > 0; gap /= 2)
+{
+	for (int k = rozmiar / 2; k > 0; k /= 2)
 	{
-		for (int i = gap; i < rozmiar; i += 1)
+		for (int i = k; i < rozmiar; i += 1)
 		{
-			T pom = new T[rozmiar];
-			pom = tab[i];
+			T pom = tab[i];
 
 			int j;
-			for (j = i; j >= gap && tab[j - gap] > pom; j -= gap)
+			for (j = i; j >= k && tab[j - k] > pom; j -= k)
 			{
-				tab[j] = tab[j - gap];
+				tab[j] = tab[j - k];
 			}
 			tab[j] = pom;
 		}
-	}*/
+	}
+}
+
+template<typename T>
+void Sortowanie<T>::Odwracanie(T tab[], int rozmiar)
+{
+	for (int i = 0; i < rozmiar / 2; i++)
+	{
+		swap(tab[i], tab[rozmiar - 1 - i]);
+	}
+}
+
+template<typename T>
+void Sortowanie<T>::ZapisQuick(T tab[], int rozmiar)
+{
+	string tekst;
+	fstream plik;
+
+	plik.open("Liczby_Quick.txt", ios::out | ios::app);
+	if (plik.good())
+	{
+		for (int i = 0; i < rozmiar; i++)
+		{
+			plik << tab[i] << " ";
+		}
+
+		plik << endl << " Nastepna tablica" << endl;
+		plik.close();
+	}
+
+
+}
+
+template<typename T>
+void Sortowanie<T>::ZapisMerge(T tab[], int rozmiar)
+{
+	string tekst;
+	fstream plik;
+
+	plik.open("Liczby_Merge.txt", ios::out | ios::app);
+	if (plik.good())
+	{
+		for (int i = 0; i < rozmiar; i++)
+		{
+			plik << tab[i] << " ";
+		}
+
+		plik << endl << " Nastepna tablica" << endl;
+		plik.close();
+	}
+
+
+}
+
+template<typename T>
+void Sortowanie<T>::ZapisShell(T tab[], int rozmiar)
+{
+	string tekst;
+	fstream plik;
+
+	plik.open("Liczby_Shell.txt", ios::out | ios::app);
+	if (plik.good())
+	{
+		for (int i = 0; i < rozmiar; i++)
+		{
+			plik << tab[i] << " ";
+		}
+
+		plik << endl << " Nastepna tablica" << endl;
+		plik.close();
+	}
+
+
 }
 
 template class Sortowanie<int>;

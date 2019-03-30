@@ -1,1 +1,40 @@
-﻿  Zadanie.vcxproj -> F:\Projekty\Zadanie\Debug\Zadanie.exe
+﻿  pch.cpp
+  Tablica.cpp
+f:\projekty\zadanie\zadanie\tablica.cpp(32): warning C4244: "=": konwersja z "int" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+  f:\projekty\zadanie\zadanie\tablica.cpp(26): note: podczas kompilowania funkcji składowej „<Nieznany>” klasy klasa <Nieznany>
+  f:\projekty\zadanie\zadanie\tablica.cpp(59): note: zobacz odwołanie do klasy klasa szablon; wystąpienie „Tablica<float>” jest kompilowane
+f:\projekty\zadanie\zadanie\tablica.cpp(53): warning C4244: "=": konwersja z "int" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+  f:\projekty\zadanie\zadanie\tablica.cpp(50): note: podczas kompilowania funkcji składowej „<Nieznany>” klasy klasa <Nieznany>
+  Zadanie.cpp
+f:\projekty\zadanie\zadanie\zadanie.cpp(7): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
+f:\projekty\zadanie\zadanie\zadanie.cpp(111): warning C4244: "argument": konwersja z "double" do "int", możliwa utrata danych
+f:\projekty\zadanie\zadanie\zadanie.cpp(163): warning C4244: "argument": konwersja z "double" do "int", możliwa utrata danych
+f:\projekty\zadanie\zadanie\zadanie.cpp(216): warning C4244: "argument": konwersja z "double" do "int", możliwa utrata danych
+f:\projekty\zadanie\zadanie\zadanie.cpp(271): warning C4244: "argument": konwersja z "double" do "int", możliwa utrata danych
+f:\projekty\zadanie\zadanie\zadanie.cpp(328): warning C4244: "argument": konwersja z "double" do "int", możliwa utrata danych
+f:\projekty\zadanie\zadanie\zadanie.cpp(383): warning C4244: "argument": konwersja z "double" do "int", możliwa utrata danych
+  sortowanie.cpp
+f:\projekty\zadanie\zadanie\sortowanie.cpp(13): warning C4244: "inicjowanie": konwersja z "T" do "int", możliwa utrata danych
+          with
+          [
+              T=double
+          ]
+  f:\projekty\zadanie\zadanie\sortowanie.cpp(10): note: podczas kompilowania funkcji składowej „<Nieznany>” klasy klasa <Nieznany>
+  f:\projekty\zadanie\zadanie\sortowanie.cpp(178): note: zobacz odwołanie do klasy klasa szablon; wystąpienie „Sortowanie<double>” jest kompilowane
+f:\projekty\zadanie\zadanie\sortowanie.cpp(13): warning C4244: "inicjowanie": konwersja z "T" do "int", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+  f:\projekty\zadanie\zadanie\sortowanie.cpp(10): note: podczas kompilowania funkcji składowej „<Nieznany>” klasy klasa <Nieznany>
+  f:\projekty\zadanie\zadanie\sortowanie.cpp(179): note: zobacz odwołanie do klasy klasa szablon; wystąpienie „Sortowanie<float>” jest kompilowane
+  Generowanie kodu...
+  Zadanie.vcxproj -> F:\Projekty\Zadanie\Debug\Zadanie.exe

@@ -30,15 +30,7 @@ public:
 
 	void Tworz_Tablice_PomTest(int);
 
-	//Tablica(int);
 	   
 };
-
-/*
-Tablica::Tablica(int rozmiar)
-{
-	tab = new double[rozmiar];
-}
-*/
 
 #endif

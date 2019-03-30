@@ -10,8 +10,6 @@ class Sortowanie {
 
 public:
 
-	//T* pom;
-
 	void Quick_Sort(T [], int, int );
 
 	void Scalanie(T [],T [], int , int , int );
@@ -19,6 +17,14 @@ public:
 	void Dzielenie(T [],T [], int , int );
 
 	void Shell(T [], int);
+
+	void Odwracanie(T[], int);
+
+	void ZapisQuick(T[], int);
+
+	void ZapisMerge(T[], int);
+
+	void ZapisShell(T[], int);
 
 
 

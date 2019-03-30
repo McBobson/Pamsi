@@ -12,8 +12,9 @@
 #include "Tablica.h"
 #include <ctime>
 #include <iostream>
-#include <ctime>
 #include "sortowanie.h"
+#include <cstring>
+#include <fstream>
 // TODO: w tym miejscu dodaj nagłówki, które mają być wstępnie kompilowane
 
 #endif //PCH_H
