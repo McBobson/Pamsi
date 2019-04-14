@@ -7,13 +7,13 @@ using namespace std;
 
 class Macierz {
 
-	int Wierzcholki = 0 , krawedzie = 0;
+	int Wierzcholki = 0 , krawedzie = 0, Gestosc = 0;
 
 	//int **tablica;
 
 public:
 
-	Macierz(int, int);
+	Macierz(int, float);
 	int Zwroc_Wierz()
 	{
 		return Wierzcholki;
@@ -27,12 +27,14 @@ public:
 	int **tablica;
 
 	void polacz();
+
+	void Usun();
 	
 
 };
 
 
-Macierz::Macierz(int W, int G)
+Macierz::Macierz(int W, float G)
 {
 	Wierzcholki = W;
 	krawedzie = (G*W*(W - 1)) / 200;
@@ -75,7 +77,8 @@ Macierz::Macierz(int W, int G)
 
 
 void Macierz::polacz() {
-	for (int i = 0; i < krawedzie; i++)
+	
+	/*for (int i = 0; i < krawedzie; i++)
 	{
 		int x = rand() % Wierzcholki;
 		int y = rand() % Wierzcholki;
@@ -87,12 +90,56 @@ void Macierz::polacz() {
 			tablica[x][y] = waga;
 		}
 
+		
 		if (tablica[y][x] == 0)
 		{
 			tablica[y][x] = waga;
 		}
 
+	}*/
+	int pom = krawedzie;
+
+	if (Gestosc < 100) 
+	{
+		while (pom) 
+		{
+			int i = rand() % Wierzcholki;
+			int j = rand() % Wierzcholki;
+
+			if (j > i && !tablica[i][j]) 
+			{
+				pom--;
+				tablica[i][j] = 1 + rand() % 10;
+			}
+			else if (i > j && !tablica[j][i]) 
+			{
+				pom--;
+				tablica[j][i] = 1 + rand() % 10;
+			}
+		}
 	}
+	else {
+		for (int i = 0; i < Wierzcholki; i++)
+		{
+			for (int j = 0; j < Wierzcholki; j++)
+			{
+				if (j > i)
+				{
+					tablica[i][j] = 1 + rand() % 10;
+				}
+			}
+		}
+	}
+}
+
+void Macierz::Usun()
+{
+	for (int i = 0; i < Wierzcholki; i++)
+	{
+		delete[] tablica[i];
+	}
+
+	delete[] tablica;
 }
 
 

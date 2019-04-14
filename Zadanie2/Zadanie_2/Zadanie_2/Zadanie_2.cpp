@@ -10,55 +10,23 @@ int main()
 {
 
 	srand(time(NULL));
-	/*
-	int A[maxn][maxn];
-
-	int x,y;
-	
-	for (int i = 0; i < maxn; i++)
-	{
-		for (int j = 0; j < maxn; j++)
-		{
-			A[i][j] = 0;
-		}
-	}
-
-	int krawedz;
-
-	cout << "Wprowadz ilosc krawedzi" << endl;
-	cin >> krawedz;
-	int waga;
-
-	for (int i = 0; i < krawedz; i++)
-	{
-		cout << "Wprowadz elementy do polaczenia:" << endl;
-		cin >> x >> y;
-		cout << "Wrowadz wage połaczenia:" << endl;
-		cin >> waga;
-		A[x][y] = waga;
-		A[y][x] = waga;
 		
-	}
-
-	*/
-
-	/*
-	Macierz M(3,100);
+	Macierz M(4,75);
+	M.polacz();
 
 	cout << M;
 
-	//cout << "Macierz" << endl;
-	//cout << "    ";
-
 	cout << endl << endl;
 
-	cout << M.Zwroc_Kraw();
-	*/
+	cout << M.Zwroc_Kraw()<<endl;
+	
 
+	
 	Lista L;
-	L.Tworz_Liste(3, 3);
+	L.Tworz_Liste(4,75);
 	L.Wypisz();
 
+	/*
 	Lista L2;
 	L2.Tworz_Liste(3, 3);
 	L2.Wypisz();
@@ -70,8 +38,12 @@ int main()
 	Lista L4;
 	L4.Tworz_Liste(3, 3);
 	L4.Wypisz();
-
+	*/
 	
+
+
+	//M.Usun();
+	//L.Usun_Liste();
 
 	return 0;
 
