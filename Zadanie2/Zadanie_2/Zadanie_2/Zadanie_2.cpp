@@ -11,7 +11,7 @@ int main()
 
 	srand(time(NULL));
 		
-	Macierz M(4,75);
+	Macierz M(4,50);
 	M.polacz();
 
 	cout << M;
@@ -23,9 +23,9 @@ int main()
 
 	
 	Lista L;
-	L.Tworz_Liste(4,75);
+	L.Tworz_Liste(4,50);
 	L.Wypisz();
-
+	
 	/*
 	Lista L2;
 	L2.Tworz_Liste(3, 3);

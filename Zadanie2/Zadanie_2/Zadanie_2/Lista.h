@@ -5,27 +5,57 @@
 
 using namespace std;
 
-
 class Lista{
 
 public:
+
 	Lista * next;
 	int v;
+	int weight;
+
+	// KONIEC STRUKTYRU W KLASIE
+
+	int rozmiar=0; // ?
+
 
 	int n, m, i, v1, v2;
-	Lista ** A;
+
+	Lista **A;
 	Lista *p, *r;
+
+	int **Tablica_Flag;
+
 	int W = 0, K = 0;
 
-	void Usun_Liste();
+	void Usun_Liste(); // OK 
 
-	void Tworz_Liste(int, float);	
+	void Tworz_Liste(int, float);	// OK
 
-	void Wypisz();
+	void Wypisz(); // OK 
+
+	bool Sprawdz(int, int); // ?
+
+	int Rozmiar(int); // OK 
 	
 
 
 };
+
+int Lista::Rozmiar(int WSt)
+{
+	p = A[WSt];
+
+	rozmiar = 0;
+
+	while (p)
+	{
+		rozmiar++;
+		p = p->next;
+	}
+	//rozmiar--;
+
+	return rozmiar;
+}
 
 void Lista::Tworz_Liste(int Wierzcholki, float G)
 {
@@ -36,30 +66,80 @@ void Lista::Tworz_Liste(int Wierzcholki, float G)
 
 	for (int i = 0; i < Wierzcholki; i++)
 	{
-		A[i] = 0;
+		A[i] = NULL;
 	}
 
-	/*
-	for (int i = 0; i < Krawedzie; i++)
+	Tablica_Flag = new int *[W];
+
+	for (int i = 0; i < W; i++)
 	{
-		v1 = rand() % Wierzcholki;
-		v2 = rand() % Wierzcholki;
+		Tablica_Flag[i] = new int[W];
+	}
 
-		p = new Lista;
-		p->v = v2;
-		p->next = A[v1];
-		A[v1] = p;
-
-		/*
-		p = new Lista;
-		p->v = v1;
-		p->next = A[v2];
-		A[v2] = p;
-	}*/
+	for (int i = 0; i < W; i++)
+	{
+		for (int j = 0; j < W; j++)
+		{
+			Tablica_Flag[i][j] = 0;
+		}
+	}
 
 	int pom = K;
-	cout << endl << pom << endl;
+	int waga;
+		
+		if (G < 100)
+		{
+			while (pom)
+			{
+				v1 = rand() % W;
+				v2 = rand() % W;
+				waga = rand() % 10 + 1;
 
+				if (v1 > v2 && !Tablica_Flag[v2][v1])
+				{
+					p = new Lista;
+					p->v = v1;
+					p->weight = waga;
+					p->next = A[v2];
+					A[v2] = p;
+					Tablica_Flag[v2][v1] = 1;
+					pom--;
+				}
+
+				if (v2 > v1 && !Tablica_Flag[v1][v2])
+				{
+					p = new Lista;
+					p->v = v2;
+					p->weight = waga;
+					p->next = A[v1];
+					A[v1] = p;
+					Tablica_Flag[v1][v2] = 1;
+					pom--;
+				}
+			}
+		}
+		else
+		{
+			for (int i = 0; i < W; i++)
+			{
+				for (int j = 0; j < W; j++)
+				{
+					if (j > i)
+					{
+						waga = rand() % 10 + 1;
+						p = new Lista;
+						p->v = j;
+						p->weight = waga;
+						p->next = A[i];
+						A[i] = p;
+						Tablica_Flag[i][j] = 1;
+					}
+				}
+			}
+	}
+
+	
+	/*
 	if (G < 100)
 	{
 
@@ -70,11 +150,10 @@ void Lista::Tworz_Liste(int Wierzcholki, float G)
 
 			//cout << "SZUKAM KRAWEDZI" << endl;
 
-			if (v2 > v1 && !A[v1])
+			if (v2 > v1 && Sprawdz(v1,v2))
 			{
 				pom--;
-
-
+				
 				int waga = 1 + rand() % 10;
 				p = new Lista;
 				p->v = waga;
@@ -90,11 +169,10 @@ void Lista::Tworz_Liste(int Wierzcholki, float G)
 
 			}
 
-			else if (v1 > v2 && !A[v2])
+			else if (v1 > v2 && Sprawdz(v2,v1))
 			{
 				pom--;
-
-
+				
 				int waga = 1 + rand() % 10;
 				p = new Lista;
 				p->v = waga;
@@ -137,6 +215,28 @@ void Lista::Tworz_Liste(int Wierzcholki, float G)
 				}
 			}
 		}
+	}*/
+
+}
+
+bool Lista::Sprawdz(int Wierzcholek_Startowy, int Element)
+{
+	p = A[Wierzcholek_Startowy];
+	int licznik = 1;
+
+	while (p && licznik < Rozmiar(Wierzcholek_Startowy) && p->v != Element)
+	{
+		p = p->next;
+		licznik++;
+	}
+
+	if (p->v == Element)
+	{
+		return true;
+	}
+	else if (p->v != Element)
+	{
+		return false;
 	}
 
 }
