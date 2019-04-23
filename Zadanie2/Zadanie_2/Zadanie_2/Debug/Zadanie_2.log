@@ -1,6 +1,6 @@
 ﻿  Zadanie_2.cpp
-f:\projekty\zadanie2\zadanie_2\zadanie_2\macierz.h(44): warning C4244: "=": konwersja z "float" do "int", możliwa utrata danych
 f:\projekty\zadanie2\zadanie_2\zadanie_2\macierz.h(45): warning C4244: "=": konwersja z "float" do "int", możliwa utrata danych
+f:\projekty\zadanie2\zadanie_2\zadanie_2\macierz.h(46): warning C4244: "=": konwersja z "float" do "int", możliwa utrata danych
 f:\projekty\zadanie2\zadanie_2\zadanie_2\lista.h(65): warning C4244: "=": konwersja z "float" do "int", możliwa utrata danych
-f:\projekty\zadanie2\zadanie_2\zadanie_2\zadanie_2.cpp(13): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
+f:\projekty\zadanie2\zadanie_2\zadanie_2\zadanie_2.cpp(70): warning C4244: "argument": konwersja z "time_t" do "unsigned int", możliwa utrata danych
   Zadanie_2.vcxproj -> F:\Projekty\Zadanie2\Zadanie_2\Debug\Zadanie_2.exe

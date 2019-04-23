@@ -20,8 +20,7 @@ public:
 	void Djikstra_Lista(Lista&, int, int);
 	void Djikstra_Macierz(Macierz&, int, int);
 
-	void Usun();
-
+	float Czas_Macierz(Macierz&, int, int);
 
 
 };
@@ -56,7 +55,7 @@ void Djikstra::Djikstra_Lista(Lista& L, int W, int Wst)
 		}
 	}
 
-	Wyswietl_Lista(L, W);
+	//Wyswietl_Lista(L, W);
 }
 
 int Djikstra::minDyst_L(Lista L, int W)
@@ -123,7 +122,7 @@ void Djikstra::Djikstra_Macierz(Macierz& M, int W, int Wst)
 		}
 	}
 
-	Wyswietl_Macierz(M, W);
+	//Wyswietl_Macierz(M, W);
 }
 
 void Djikstra::Wyswietl_Lista(Lista L, int W)
@@ -152,10 +151,6 @@ void Djikstra::Wyswietl_Lista(Lista L, int W)
 
 }
 
-void Djikstra::Usun()
-{
-}
-
 void Djikstra::Wyswietl_Macierz(Macierz M,int W)
 {
 	int *S;
@@ -179,6 +174,18 @@ void Djikstra::Wyswietl_Macierz(Macierz M,int W)
 	}
 
 	delete[] S;
+}
+
+float Djikstra::Czas_Macierz(Macierz& M, int W, int Wst)
+{
+	clock_t start, stop;
+	float czas;
+	start = clock();
+	Djikstra_Macierz(M, W, Wst);
+	stop = clock();
+	czas = (float)(stop - start) / CLOCKS_PER_SEC;
+	return czas;
+
 }
 
 

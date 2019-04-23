@@ -11,6 +11,9 @@
 
 #include <iostream>
 #include <iomanip>
+#include <algorithm>
+#include <ctime>
+#include <Windows.h>
 
 #define INF 10000000
 // TODO: w tym miejscu dodaj nagłówki, które mają być wstępnie kompilowane

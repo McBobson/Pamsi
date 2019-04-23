@@ -34,6 +34,7 @@ public:
 
 	void Usun();
 	
+	float Czas_Macierz(Macierz& M);
 
 };
 
@@ -83,25 +84,6 @@ Macierz::Macierz(int W, float G)
 
 void Macierz::polacz() {
 	
-	/*for (int i = 0; i < krawedzie; i++)
-	{
-		int x = rand() % Wierzcholki;
-		int y = rand() % Wierzcholki;
-
-		int waga = rand() % 10 + 1;
-
-		if (tablica[x][y] == 0)
-		{
-			tablica[x][y] = waga;
-		}
-
-		
-		if (tablica[y][x] == 0)
-		{
-			tablica[y][x] = waga;
-		}
-
-	}*/
 	int pom = krawedzie;
 
 	if (Gestosc < 100) 
@@ -167,6 +149,8 @@ ostream& operator << (ostream& wyjscie, Macierz& M) {
 	}
 	return wyjscie;
 }
+
+
 
 
 

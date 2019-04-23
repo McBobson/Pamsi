@@ -257,7 +257,7 @@ void Lista::Usun_Liste()
 		while (p)
 		{
 			r = p;
-			p->next;
+			p = p->next;
 			delete r;
 		}
 	}

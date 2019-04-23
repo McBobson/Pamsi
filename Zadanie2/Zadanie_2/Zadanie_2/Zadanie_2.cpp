@@ -5,61 +5,72 @@
 
 using namespace std;
 
-const int maxn = 4;
+void Test(int W, float G) 
+{
+	const int rozmiar = 100;
+
+	float tab_czas[rozmiar];
+	clock_t start,stop;
+	float czas;
+
+	for (int i = 0; i < rozmiar; i++) 
+	{
+		Macierz M(W, G);
+		Djikstra D;
+		M.polacz();
+
+		start = clock();
+		D.Djikstra_Macierz(M, W, 0);
+		stop = clock();
+		czas = (float)(stop - start) / CLOCKS_PER_SEC;
+		tab_czas[i] = czas;
+		//cout << tab_czas[i] << endl;
+
+		M.Usun();
+	}
+
+	sort(tab_czas, tab_czas + rozmiar);
+	cout << endl;
+	cout << "(M) W: " << W << " Gestosc: " << G << " Min czas: " << tab_czas[0] << endl;
+	cout << "(M) W: " << W << " Gestosc: " << G << " Średni czas: " << tab_czas[rozmiar/2] << endl;
+	cout << "(M) W: " << W << " Gestosc: " << G << " Max czas: " << tab_czas[rozmiar-1] << endl;
+
+	cout << endl << endl;
+
+	
+
+	for (int i = 0; i < rozmiar; i++)
+	{
+		Lista L;
+		L.Tworz_Liste(W, G);
+		Djikstra D;
+
+		start = clock();
+		D.Djikstra_Lista(L, W, 0);
+		stop = clock();
+		czas = (float)(stop - start) / CLOCKS_PER_SEC;
+		tab_czas[i] = czas;
+		//cout << tab_czas[i] << endl;
+
+		L.Usun_Liste();
+	}
+
+	sort(tab_czas, tab_czas + rozmiar);
+	cout << endl;
+	cout << "(M) W: " << W << " Gestosc: " << G << " Min czas: " << tab_czas[0] << endl;
+	cout << "(M) W: " << W << " Gestosc: " << G << " Średni czas: " << tab_czas[rozmiar / 2] << endl;
+	cout << "(M) W: " << W << " Gestosc: " << G << " Max czas: " << tab_czas[rozmiar - 1] << endl;
+	
+
+}
+
 
 int main()
 {
-
 	srand(time(NULL));	
 
-	/*
-	Lista L;
-	L.Tworz_Liste(3,100);
-	L.Wypisz();
+	Test(500,80);
 
-	cout << endl << endl << endl;
-
-	cout << "DJIKSTRA" << endl;
-
-	Djikstra D(3);
-	D.Djikstra_Lista(L);
-	D.Wyswietl();
-	*/
-
-	Macierz M(4, 75);
-	M.polacz();
-	cout << M;
-
-	Djikstra D;
-
-	D.Djikstra_Macierz(M, 4, 0);
-
-	cout << endl << "KURWNIE" << endl << endl;
-
-	Lista L;
-	L.Tworz_Liste(4, 75);
-	L.Wypisz();
-	cout << endl;
-	D.Djikstra_Lista(L, 4, 0);
-	
-	/*
-	Lista L2;
-	L2.Tworz_Liste(3, 3);
-	L2.Wypisz();
-
-	Lista L3;
-	L3.Tworz_Liste(3, 3);
-	L3.Wypisz();
-
-	Lista L4;
-	L4.Tworz_Liste(3, 3);
-	L4.Wypisz();
-	*/
-	
-
-
-	//M.Usun();
-	//L.Usun_Liste();
 
 	return 0;
 
