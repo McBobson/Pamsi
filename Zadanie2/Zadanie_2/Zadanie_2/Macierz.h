@@ -13,6 +13,10 @@ class Macierz {
 
 public:
 
+	int *cena;
+	int *droga;
+	bool *spt;
+
 	Macierz(int, float);
 	int Zwroc_Wierz()
 	{
@@ -38,6 +42,7 @@ Macierz::Macierz(int W, float G)
 {
 	Wierzcholki = W;
 	krawedzie = (G*W*(W - 1)) / 200;
+	Gestosc = G;
 
 	tablica = new int *[W];
 

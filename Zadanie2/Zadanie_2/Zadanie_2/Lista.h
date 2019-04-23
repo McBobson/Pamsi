@@ -23,6 +23,10 @@ public:
 	Lista **A;
 	Lista *p, *r;
 
+	int *cena;
+	int *droga;
+	bool *spt;
+
 	int **Tablica_Flag;
 
 	int W = 0, K = 0;
@@ -32,8 +36,6 @@ public:
 	void Tworz_Liste(int, float);	// OK
 
 	void Wypisz(); // OK 
-
-	bool Sprawdz(int, int); // ?
 
 	int Rozmiar(int); // OK 
 	
@@ -219,28 +221,6 @@ void Lista::Tworz_Liste(int Wierzcholki, float G)
 
 }
 
-bool Lista::Sprawdz(int Wierzcholek_Startowy, int Element)
-{
-	p = A[Wierzcholek_Startowy];
-	int licznik = 1;
-
-	while (p && licznik < Rozmiar(Wierzcholek_Startowy) && p->v != Element)
-	{
-		p = p->next;
-		licznik++;
-	}
-
-	if (p->v == Element)
-	{
-		return true;
-	}
-	else if (p->v != Element)
-	{
-		return false;
-	}
-
-}
-
 void Lista::Wypisz()
 {
 	for (i = 0; i < W; i++)
@@ -250,6 +230,19 @@ void Lista::Wypisz()
 		while (p)
 		{
 			cout << setw(3) << p->v;
+			p = p->next;
+		}
+		cout << endl;
+	}
+
+	cout << endl << "WAGI" << endl;
+	for (i = 0; i < W; i++)
+	{
+		cout << "A[" << i << "] =";
+		p = A[i];
+		while (p)
+		{
+			cout << setw(3) << p->weight;
 			p = p->next;
 		}
 		cout << endl;

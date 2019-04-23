@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Djikstra.h" />
     <ClInclude Include="Lista.h" />
     <ClInclude Include="Macierz.h" />
     <ClInclude Include="pch.h" />

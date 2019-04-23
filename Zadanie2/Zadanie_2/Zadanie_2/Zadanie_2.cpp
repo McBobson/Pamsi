@@ -1,6 +1,7 @@
 ﻿#include "pch.h"
 #include "Macierz.h"
 #include "Lista.h"
+#include "Djikstra.h"
 
 using namespace std;
 
@@ -9,22 +10,37 @@ const int maxn = 4;
 int main()
 {
 
-	srand(time(NULL));
-		
-	Macierz M(4,50);
-	M.polacz();
+	srand(time(NULL));	
 
+	/*
+	Lista L;
+	L.Tworz_Liste(3,100);
+	L.Wypisz();
+
+	cout << endl << endl << endl;
+
+	cout << "DJIKSTRA" << endl;
+
+	Djikstra D(3);
+	D.Djikstra_Lista(L);
+	D.Wyswietl();
+	*/
+
+	Macierz M(4, 75);
+	M.polacz();
 	cout << M;
 
-	cout << endl << endl;
+	Djikstra D;
 
-	cout << M.Zwroc_Kraw()<<endl;
-	
+	D.Djikstra_Macierz(M, 4, 0);
 
-	
+	cout << endl << "KURWNIE" << endl << endl;
+
 	Lista L;
-	L.Tworz_Liste(4,50);
+	L.Tworz_Liste(4, 75);
 	L.Wypisz();
+	cout << endl;
+	D.Djikstra_Lista(L, 4, 0);
 	
 	/*
 	Lista L2;
