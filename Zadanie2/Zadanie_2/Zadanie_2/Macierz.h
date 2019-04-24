@@ -9,15 +9,16 @@ class Macierz {
 
 	int Wierzcholki = 0 , krawedzie = 0, Gestosc = 0;
 
-	//int **tablica;
-
 public:
 
 	int *cena;
 	int *droga;
 	bool *spt;
 
+	int **tablica;
+
 	Macierz(int, float);
+
 	int Zwroc_Wierz()
 	{
 		return Wierzcholki;
@@ -28,13 +29,9 @@ public:
 		return krawedzie;
 	}
 
-	int **tablica;
-
 	void polacz();
 
 	void Usun();
-	
-	float Czas_Macierz(Macierz& M);
 
 };
 
@@ -80,7 +77,6 @@ Macierz::Macierz(int W, float G)
 	}
 	*/
 }
-
 
 void Macierz::polacz() {
 	
@@ -129,6 +125,58 @@ void Macierz::Usun()
 	delete[] tablica;
 }
 
+int minDyst_M_K(Macierz& M, int W)
+{
+	int min = INF;
+	int min_index;
+
+	for (int i = 0; i < W; i++)
+	{
+		if (M.spt[i] == false && M.cena[i] <= min)
+		{
+			min = M.cena[i];
+			min_index = i;
+		}
+	}
+
+	return min_index;
+}
+
+void Djikstra_Macierz_K(Macierz& M, int W, int Wst)
+{
+	M.cena = new int[W];
+	M.droga = new int[W];
+	M.spt = new bool[W];
+
+	for (int i = 0; i < W; i++)
+	{
+		M.cena[i] = INF;
+		M.spt[i] = false;
+		M.droga[i] = -1;
+	}
+
+	M.cena[Wst] = 0;
+
+	for (int i = 0; i < W - 1; i++)
+	{
+		int u = minDyst_M_K(M, W);
+		M.spt[u] = true;
+
+		for (int j = 0; j < W; j++)
+		{
+			if (!M.spt[j] && M.tablica[u][j] && M.cena[u] != INF && M.cena[u] + M.tablica[u][j] < M.cena[j])
+			{
+				M.cena[j] = M.cena[u] + M.tablica[u][j];
+				M.droga[j] = u;
+			}
+		}
+	}
+
+	delete M.cena;
+	delete M.droga;
+
+	//Wyswietl_Macierz(M, W);
+}
 
 ostream& operator << (ostream& wyjscie, Macierz& M) {
 	wyjscie << endl << "    ";

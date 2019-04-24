@@ -12,10 +12,10 @@ public:
 
 	Lista *p;
 
-	void Wyswietl_Lista(Lista, int);
-	void Wyswietl_Macierz(Macierz, int);
-	int minDyst_M(Macierz, int);
-	int minDyst_L(Lista, int);
+	void Wyswietl_Lista(Lista&, int);
+	void Wyswietl_Macierz(Macierz&, int);
+	int minDyst_M(Macierz&, int);
+	int minDyst_L(Lista&, int);
 
 	void Djikstra_Lista(Lista&, int, int);
 	void Djikstra_Macierz(Macierz&, int, int);
@@ -55,10 +55,14 @@ void Djikstra::Djikstra_Lista(Lista& L, int W, int Wst)
 		}
 	}
 
+	delete[] L.cena;
+	delete[] L.droga;
+	delete[] L.spt;
+
 	//Wyswietl_Lista(L, W);
 }
 
-int Djikstra::minDyst_L(Lista L, int W)
+int Djikstra::minDyst_L(Lista& L, int W)
 {
 	int min = INF;
 	int min_index;
@@ -75,7 +79,7 @@ int Djikstra::minDyst_L(Lista L, int W)
 	return min_index;
 }
 
-int Djikstra::minDyst_M(Macierz M, int W)
+int Djikstra::minDyst_M(Macierz& M, int W)
 {
 	int min = INF;
 	int min_index;
@@ -121,11 +125,14 @@ void Djikstra::Djikstra_Macierz(Macierz& M, int W, int Wst)
 			}
 		}
 	}
-
 	//Wyswietl_Macierz(M, W);
+
+	delete[] M.cena;
+	delete[] M.droga;
+	delete[] M.spt;
 }
 
-void Djikstra::Wyswietl_Lista(Lista L, int W)
+void Djikstra::Wyswietl_Lista(Lista& L, int W)
 {
 	int *S;
 	S = new int[W];
@@ -151,7 +158,7 @@ void Djikstra::Wyswietl_Lista(Lista L, int W)
 
 }
 
-void Djikstra::Wyswietl_Macierz(Macierz M,int W)
+void Djikstra::Wyswietl_Macierz(Macierz& M,int W)
 {
 	int *S;
 	S = new int[W];

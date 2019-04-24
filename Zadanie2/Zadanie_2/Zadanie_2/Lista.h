@@ -16,18 +16,17 @@ public:
 	// KONIEC STRUKTYRU W KLASIE
 
 	int rozmiar=0; // ?
-
-
+	
 	int n, m, i, v1, v2;
 
 	Lista **A;
 	Lista *p, *r;
 
-	int *cena;
-	int *droga;
-	bool *spt;
+	int *cena; //usuwamy na koncu
+	int *droga; //usuwamy na koncu
+	bool *spt; // usuwamy na koncu
 
-	int **Tablica_Flag;
+	int **Tablica_Flag; // usuwamy na koncu
 
 	int W = 0, K = 0;
 
@@ -38,8 +37,6 @@ public:
 	void Wypisz(); // OK 
 
 	int Rozmiar(int); // OK 
-	
-
 
 };
 
@@ -262,6 +259,16 @@ void Lista::Usun_Liste()
 		}
 	}
 	delete[] A;
+	
+
+	for (int i = 0; i < W; i++)
+	{
+		delete[] Tablica_Flag[i];
+	}
+
+	delete[] Tablica_Flag;
 }
+
+
 
 #endif
