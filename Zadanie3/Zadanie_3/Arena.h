@@ -14,16 +14,20 @@ public:
 	
 
 	Arena();
+	Arena(int);
 	~Arena();
 
-	void Przesun_Pionek(int,int,int,int,int);
+	int Przesun_Pionek(int,int,int,int,int);
 	bool Czy_Jest_Pionek(int,int);
 	bool Czy_Jest_W_Arenie(int,int);
 	int Kierunek_Bicia(int[]);
 	bool Bicie(int, int,int[]);
 	void Zamien(char, int, int);
 	bool Czy_Prawidlowy_Ruch(int[],char);
-
+	bool Czy_Przyjaciel(char, char);
+	bool Czy_Mozliwe_Bicie(int, int);
+	bool Czy_Przyjaciel_Damki(int, int, int, int);
+	bool Czy_Ruch_W_Tyl(int[], char);
 
 
 };
@@ -52,14 +56,14 @@ Arena::Arena()
 	{
 		for (int j = 0; j < 8; j+=2)
 		{
-			tablica[i][j] = 'X';
+			tablica[i][j] = 'x';
 			wagi[i][j] = 1;
 		}
 	}
 
 	for (int i = 1; i < 8; i+=2)
 	{
-		tablica[1][i] = 'X';
+		tablica[1][i] = 'x';
 		wagi[1][i] = 1;
 	}
 
@@ -68,17 +72,53 @@ Arena::Arena()
 	{
 		for (int j = 1; j < 8; j += 2)
 		{
-			tablica[i][j] = 'O';
+			tablica[i][j] = 'o';
 			wagi[i][j] = 1;
 		}
 	}
 
 	for (int i = 0; i < 8; i += 2)
 	{
-		tablica[6][i] = 'O';
+		tablica[6][i] = 'o';
 		wagi[6][i] = 1;
 	}
 
+
+}
+
+Arena::Arena(int l) {
+	tablica = new char *[ROZ];
+	wagi = new int *[ROZ];
+
+	for (int i = 0; i < ROZ; i++)
+	{
+		tablica[i] = new char[ROZ];
+		wagi[i] = new int[ROZ];
+	}
+
+	for (int i = 0; i < ROZ; i++)
+	{
+		for (int j = 0; j < ROZ; j++)
+		{
+			tablica[i][j] = ' ';
+			wagi[i][j] = 0;
+		}
+	}
+
+	//tablica[7][1] = 'o';
+	//tablica[4][4] = 'x';
+	//tablica[5][1] = 'o';
+	//tablica[0][0] = 'x';
+	//tablica[2][2] = 'o';
+	//tablica[3][1] = 'o';
+	//tablica[6][2] = 'x';
+	//tablica[2][6] = 'x';
+	//tablica[2][4] = 'x';
+
+	tablica[1][1] = 'x';
+	tablica[3][1] = 'x';
+	tablica[5][1] = 'x';
+	tablica[6][2] = 'o';
 
 }
 
@@ -106,11 +146,28 @@ bool Arena::Czy_Jest_Pionek(int x, int y)
 
 bool Arena::Czy_Jest_W_Arenie(int x, int y)
 {
-	if (x <= 7 && y <= 7)
+	if (x <= 7 && y <= 7 && x >= 0 && y >= 0)
 	{
 		return true;
 	}
 
+	else return false;
+}
+
+bool Arena::Czy_Przyjaciel(char x, char y)
+{
+	if (x == y)
+	{
+		return true;
+	}
+	else if (x == 'O' && y == 'o')
+	{
+		return true;
+	}
+	else if (x == 'X' && y == 'x')
+	{
+		return true;
+	}
 	else return false;
 }
 
@@ -135,13 +192,30 @@ int Arena::Kierunek_Bicia(int tab[])
 	else return -1;
 }
 
+bool Arena::Czy_Przyjaciel_Damki(int x, int y, int x1, int y1)
+{
+	if (tablica[x][y] == tablica[x1][y1])
+	{
+		return true;
+	}
+	else if (tablica[x][y] == 'o' && tablica[x1][y1] == 'O')
+	{
+		return true;
+	}
+	else if (tablica[x][y] == 'x' && tablica[x1][y1] == 'X')
+	{
+		return true;
+	}
+	else return false;
+}
+
 bool Arena::Bicie(int x, int y, int tab[])
-{	
+{
 	switch (Kierunek_Bicia(tab))
 	{
 	case 0:
 	{
-		if (!Czy_Jest_Pionek(x - 1, y - 1) && Czy_Jest_W_Arenie(x - 1, y - 1))
+		if (!Czy_Jest_Pionek(x - 1, y - 1) && Czy_Jest_W_Arenie(x - 1, y - 1) && !Czy_Przyjaciel(tablica[x][y], tablica[x + 1][y + 1]) && Czy_Jest_Pionek(x, y))
 		{
 			return true;
 		}
@@ -151,7 +225,7 @@ bool Arena::Bicie(int x, int y, int tab[])
 
 	case 1:
 	{
-		if (!Czy_Jest_Pionek(x - 1, y + 1) && Czy_Jest_W_Arenie(x - 1, y + 1))
+		if (!Czy_Jest_Pionek(x - 1, y + 1) && Czy_Jest_W_Arenie(x - 1, y + 1) && !Czy_Przyjaciel(tablica[x][y], tablica[x + 1][y - 1]) && Czy_Jest_Pionek(x, y))
 		{
 			return true;
 		}
@@ -161,7 +235,7 @@ bool Arena::Bicie(int x, int y, int tab[])
 
 	case 2:
 	{
-		if (!Czy_Jest_Pionek(x + 1, y - 1) && Czy_Jest_W_Arenie(x + 1, y - 1))
+		if (!Czy_Jest_Pionek(x + 1, y - 1) && Czy_Jest_W_Arenie(x + 1, y - 1) && !Czy_Przyjaciel(tablica[x][y], tablica[x - 1][y + 1]) && Czy_Jest_Pionek(x, y))
 		{
 			return true;
 		}
@@ -171,7 +245,7 @@ bool Arena::Bicie(int x, int y, int tab[])
 
 	case 3:
 	{
-		if (!Czy_Jest_Pionek(x + 1, y + 1) && Czy_Jest_W_Arenie(x + 1, y + 1))
+		if (!Czy_Jest_Pionek(x + 1, y + 1) && Czy_Jest_W_Arenie(x + 1, y + 1) && !Czy_Przyjaciel(tablica[x][y], tablica[x - 1][y - 1]) && Czy_Jest_Pionek(x, y))
 		{
 			return true;
 		}
@@ -186,105 +260,201 @@ bool Arena::Bicie(int x, int y, int tab[])
 
 void Arena::Zamien(char znak, int x, int y)
 {
-	if (znak == 'X' && x == 7)
+	if (znak == 'x' && x == 7)
 	{
-		tablica[x][y] = 'C';
+		tablica[x][y] = 'X';
 		wagi[x][y] = 2;
 	}
 
-	if (znak == 'O' && x == 0)
+	if (znak == 'o' && x == 0)
 	{
-		tablica[x][y] = 'P';
+		tablica[x][y] = 'O';
 		wagi[x][y] = 2;
 	}
 }
 
 bool Arena::Czy_Prawidlowy_Ruch(int pom[],char znak)
 {
-	if ((abs(pom[0]) == 1 && abs(pom[1]) == 1 && (znak=='X' || znak=='O')) || ((abs(pom[0]) > 0 && abs(pom[1]) > 0 && (znak == 'P' || znak == 'C'))))
+	if ((abs(pom[0])==1 && abs(pom[1])==1 && (znak=='x' || znak=='o')) || ((abs(pom[0]) == abs(pom[1]) && (znak=='X' || znak=='O'))))
 	{
 		return true;
 	}
 	else return false;
 }
 
-void Arena::Przesun_Pionek(int y1,int x1,int y2,int x2, int gracz)
+bool Arena::Czy_Ruch_W_Tyl(int pom[], char znak)
+{
+	if ((znak == 'x' && pom[0] > 0 || znak == 'o' && pom[0] < 0))
+	{
+		return true;
+	}
+	else return false;
+}
+
+bool Arena::Czy_Mozliwe_Bicie(int x, int y)
+{
+	int LUp[2] = {-1,-1}; 
+	int RUp[2] = {-1,1};
+	int RDown[2] = {1,1};
+	int LDown[2] = {1,-1};
+	
+	/*
+	if (Bicie(x-1,y-1,LUp)==1 && Czy_Jest_W_Arenie(x-1,y-1))
+	{
+		cout << "Tak1" << endl;
+		return true;
+	}
+	else if (Bicie(x-1, y+1, RUp)==1 && Czy_Jest_W_Arenie(x - 1, y + 1))
+	{
+		cout << "Tak2" << endl;
+		return true;
+	}
+	else if (Bicie(x+1, y+1, RDown)==1 && Czy_Jest_W_Arenie(x + 1, y + 1))
+	{
+		cout << "Tak3" << endl;
+		return true;
+	}
+	else if (Bicie(x+1, y-1, LDown)==1 && Czy_Jest_W_Arenie(x + 1, y - 1))
+	{
+		cout << "Tak4" << endl;
+		return true;
+	}
+
+	else return false;*/
+
+	if (Czy_Jest_W_Arenie(x - 1, y - 1) && x-1!=(7 && 0) && y-1!=(7 && 0))
+	{
+		//cout << "Bicie lewo gora" << endl;
+		//cout << x << " " << y << endl;
+		if (Bicie(x - 1, y - 1, LUp))
+		{
+			//cout << "Tak1" << endl;
+			return true;
+		}
+	}
+
+	if (Czy_Jest_W_Arenie(x - 1, y + 1) && x - 1 != (7 && 0) && y + 1 != (7 && 0))
+	{
+		//cout << "Bicie prawo gora" << endl;
+		if (Bicie(x - 1, y + 1, RUp))
+		{
+			//cout << "Tak2" << endl;
+			return true;
+		}
+	}
+
+	if (Czy_Jest_W_Arenie(x + 1, y + 1) && x + 1 != (7 && 0) && y + 1 != (7 && 0))
+	{
+		//cout << "Bicie prawo dol" << endl;
+		if (Bicie(x + 1, y + 1, RDown))
+		{
+			//cout << "Tak3" << endl;
+			return true;
+		}
+	}
+
+	if (Czy_Jest_W_Arenie(x + 1, y - 1) && x + 1 != (7 && 0) && y - 1 != (7 && 0))
+	{
+		//cout << "Bicie lewo dol" << endl;
+		if (Bicie(x + 1, y - 1, LDown))
+		{
+			//cout << "Tak4" << endl;
+			return true;
+		}
+	}
+
+	
+}
+
+int Arena::Przesun_Pionek(int y1,int x1,int y2,int x2, int gracz)
 {
 	pom[0] = x2 - x1;
 	pom[1] = y2 - y1;
 
-	if ((tablica[x1][y1] == 'O' && gracz == 1) || (tablica[x1][y1] == 'X' && gracz == 2))
+	if ((tablica[x1][y1] == 'o' && gracz == 1) || (tablica[x1][y1] == 'x' && gracz == 2) || (tablica[x1][y1] == 'O' && gracz == 1) || (tablica[x1][y1] == 'X' && gracz == 2)) // Czy prawid³owy warcab dla gracza
 	{
 		if (Czy_Jest_Pionek(x1, y1) && Czy_Jest_W_Arenie(x2, y2) && Czy_Prawidlowy_Ruch(pom, tablica[x1][y1]))
 		{
-
-			if (Czy_Jest_Pionek(x2, y2))
+			if (Czy_Jest_Pionek(x2, y2)) // Instrukcje gdy bijemy pionki
 			{
-				if (Bicie(x2, y2, pom))
+				if (tablica[x1][y1] == 'O' || tablica[x1][y1] == 'X')
 				{
-					switch (Kierunek_Bicia(pom))
+					cout << "Damka" << endl;
+				}
+				else 
+				{
+					if (Bicie(x2, y2, pom))
 					{
-					case 0:
-					{
-						tablica[x2 - 1][y2 - 1] = tablica[x1][y1];
-						tablica[x1][y1] = ' ';
-						tablica[x2][y2] = ' ';
+						switch (Kierunek_Bicia(pom))
+						{
+						case 0:
+						{
+							tablica[x2 - 1][y2 - 1] = tablica[x1][y1];
+							tablica[x1][y1] = ' ';
+							tablica[x2][y2] = ' ';
 
-						wagi[x2 - 1][y2 - 1] = wagi[x1][y1];
-						wagi[x1][y1] = 0;
-						wagi[x2][y2] = 0;
+							wagi[x2 - 1][y2 - 1] = wagi[x1][y1];
+							wagi[x1][y1] = 0;
+							wagi[x2][y2] = 0;
 
-						Zamien(tablica[x2 - 1][y2 - 1], x2 - 1, y2 - 1);
+							Zamien(tablica[x2 - 1][y2 - 1], x2 - 1, y2 - 1);
+						}
+						break;
+
+						case 1:
+						{
+							tablica[x2 - 1][y2 + 1] = tablica[x1][y1];
+							tablica[x1][y1] = ' ';
+							tablica[x2][y2] = ' ';
+
+							wagi[x2 - 1][y2 + 1] = wagi[x1][y1];
+							wagi[x1][y1] = 0;
+							wagi[x2][y2] = 0;
+
+							Zamien(tablica[x2 - 1][y2 + 1], x2 - 1, y2 + 1);
+						}
+						break;
+
+						case 2:
+						{
+							tablica[x2 + 1][y2 - 1] = tablica[x1][y1];
+							tablica[x1][y1] = ' ';
+							tablica[x2][y2] = ' ';
+
+							wagi[x2 + 1][y2 - 1] = wagi[x1][y1];
+							wagi[x1][y1] = 0;
+							wagi[x2][y2] = 0;
+
+							Zamien(tablica[x2 + 1][y2 - 1], x2 + 1, y2 - 1);
+						}
+						break;
+
+						case 3:
+						{
+							tablica[x2 + 1][y2 + 1] = tablica[x1][y1];
+							tablica[x1][y1] = ' ';
+							tablica[x2][y2] = ' ';
+
+							wagi[x2 + 1][y2 + 1] = wagi[x1][y1];
+							wagi[x1][y1] = 0;
+							wagi[x2][y2] = 0;
+
+							Zamien(tablica[x2 + 1][y2 + 1], x2 + 1, y2 + 1);
+						}
+						break;
+						}
+						return 1;
+
 					}
-					break;
-
-					case 1:
+					else
 					{
-						tablica[x2 - 1][y2 + 1] = tablica[x1][y1];
-						tablica[x1][y1] = ' ';
-						tablica[x2][y2] = ' ';
-
-						wagi[x2 - 1][y2 + 1] = wagi[x1][y1];
-						wagi[x1][y1] = 0;
-						wagi[x2][y2] = 0;
-
-						Zamien(tablica[x2 - 1][y2 + 1], x2 - 1, y2 + 1);
-					}
-					break;
-
-					case 2:
-					{
-						tablica[x2 + 1][y2 - 1] = tablica[x1][y1];
-						tablica[x1][y1] = ' ';
-						tablica[x2][y2] = ' ';
-
-						wagi[x2 + 1][y2 - 1] = wagi[x1][y1];
-						wagi[x1][y1] = 0;
-						wagi[x2][y2] = 0;
-
-						Zamien(tablica[x2 + 1][y2 - 1], x2 + 1, y2 - 1);
-					}
-					break;
-
-					case 3:
-					{
-						tablica[x2 + 1][y2 + 1] = tablica[x1][y1];
-						tablica[x1][y1] = ' ';
-						tablica[x2][y2] = ' ';
-
-						wagi[x2 + 1][y2 + 1] = wagi[x1][y1];
-						wagi[x1][y1] = 0;
-						wagi[x2][y2] = 0;
-
-						Zamien(tablica[x2 + 1][y2 + 1], x2 + 1, y2 + 1);
-					}
-					break;
+						cout << "Bicie nie jest mozliwe" << endl;
+						return 0;
 					}
 				}
-				else
-					cout << "Bicie nie jest mozliwe" << endl;
+
 			}
-			else
+			else if(Czy_Ruch_W_Tyl(pom, tablica[x1][y1]))
 			{
 				tablica[x2][y2] = tablica[x1][y1];
 				tablica[x1][y1] = ' ';
@@ -293,19 +463,27 @@ void Arena::Przesun_Pionek(int y1,int x1,int y2,int x2, int gracz)
 				wagi[x1][y1] = 0;
 
 				Zamien(tablica[x2][y2], x2, y2);
+				return 0;
 			}
+			else cout << "Nie uciekamy z frontu!!!" << endl;
 
 		}
 		else
 		{
-			cout << "Zjebales" << endl;
 			cout << "Kody b³edu: " << endl;
 			cout << "Czy jest pionek: " << Czy_Jest_Pionek(x1, y1) << endl;
 			cout << "Czy jest w arenie: " << Czy_Jest_W_Arenie(x2, y2) << endl;
 			cout << "Czy prawidlowy ruch: " << Czy_Prawidlowy_Ruch(pom, tablica[x1][y1]) << endl;
+			return 0;
 		}
 	}
-	else cout << "Trzymaj sie swoich pionow rycerzu!!!!" << endl;
+	else
+	{
+		cout << "Trzymaj sie swoich pionow rycerzu!!!!" << endl;
+		return 0;
+	}
+
+	
 }
 
 ostream& operator << (ostream& wyjscie, Arena& A) {
@@ -576,11 +754,6 @@ ostream& operator << (ostream& wyjscie, Arena& A) {
 	
 	return wyjscie;
 }
-
-
-
-
-
 
 
 #endif // !PLANSZA_H
