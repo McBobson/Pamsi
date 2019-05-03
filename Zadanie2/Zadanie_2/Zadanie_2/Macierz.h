@@ -56,26 +56,6 @@ Macierz::Macierz(int W, float G)
 			tablica[i][j] = 0;
 		}
 	}
-
-	/*	for (int i = 0; i < krawedzie; i++)
-	{
-		int x = rand() % W;
-		int y = rand() % W;
-
-		int waga = rand() % 10 + 1;
-
-		if (tablica[x][y] == 0)
-		{
-			tablica[x][y] = waga;
-		}
-
-		if (tablica[y][x] == 0)
-		{
-			tablica[y][x] = waga;
-		}
-	
-	}
-	*/
 }
 
 void Macierz::polacz() {

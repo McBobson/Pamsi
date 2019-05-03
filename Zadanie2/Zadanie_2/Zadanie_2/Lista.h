@@ -13,9 +13,9 @@ public:
 	int v;
 	int weight;
 
-	// KONIEC STRUKTYRU W KLASIE
+	// KONIEC STRUKTUR W KLASIE
 
-	int rozmiar=0; // ?
+	int rozmiar=0; 
 	
 	int n, m, i, v1, v2;
 
@@ -135,87 +135,7 @@ void Lista::Tworz_Liste(int Wierzcholki, float G)
 					}
 				}
 			}
-	}
-
-	
-	/*
-	if (G < 100)
-	{
-
-		while (pom)
-		{
-			int v1 = rand() % W;
-			int v2 = rand() % W;
-
-			//cout << "SZUKAM KRAWEDZI" << endl;
-
-			if (v2 > v1 && Sprawdz(v1,v2))
-			{
-				pom--;
-				
-				int waga = 1 + rand() % 10;
-				p = new Lista;
-				p->v = waga;
-				p->next = A[v1];
-				A[v1] = p;
-
-				p = new Lista;
-				p->v = v2;
-				p->next = A[v1];
-				A[v1] = p;
-
-				cout << "PIERWSZY IFFF" << endl;
-
-			}
-
-			else if (v1 > v2 && Sprawdz(v2,v1))
-			{
-				pom--;
-				
-				int waga = 1 + rand() % 10;
-				p = new Lista;
-				p->v = waga;
-				p->next = A[v2];
-				A[v2] = p;
-
-
-				p = new Lista;
-				p->v = v1;
-				p->next = A[v2];
-				A[v2] = p;
-
-				cout << "DRUGI IFFFF" << endl;
-			}
-
-
 		}
-
-	}
-	else
-	{
-		for (int i = 0; i < W; i++)
-		{
-			for (int j = 0; j < W; j++)
-			{
-				if (j > i)
-				{
-
-					int waga = 1 + rand() % 10;
-					p = new Lista;
-					p->v = waga;
-					p->next = A[i];
-					A[i] = p;
-
-					p = new Lista;
-					p->v = j;
-					p->next = A[i];
-					A[i] = p;
-
-				}
-			}
-		}
-	}*/
-
 }
 
 void Lista::Wypisz()
