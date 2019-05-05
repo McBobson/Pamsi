@@ -109,15 +109,15 @@ Arena::Arena(int l) {
 		}
 	}
 
-	tablica[7][1] = 'O';
-	tablica[4][4] = 'x';
-	tablica[5][1] = 'o';
-	tablica[0][0] = 'x';
+	//tablica[7][1] = 'O';
+	//tablica[4][4] = 'x';
+	//tablica[5][1] = 'o';
+	//tablica[0][0] = 'x';
 	//tablica[2][2] = 'o';
-	tablica[3][1] = 'o';
-	tablica[6][2] = 'x';
-	tablica[2][6] = 'x';
-	tablica[1][3] = 'x';
+	tablica[4][6] = 'x';
+	tablica[5][5] = 'o';
+	tablica[7][3] = 'o';
+	tablica[7][5] = 'o';
 
 	
 	//tablica[4][4] = 'x';
@@ -385,48 +385,48 @@ bool Arena::Czy_Mozliwe_Bicie(int x, int y)
 
 	else return false;*/
 
-	if (Czy_Jest_W_Arenie(x - 1, y - 1) && x-1!=(7 && 0) && y-1!=(7 && 0))
+	if (Czy_Jest_W_Arenie(x - 1, y - 1) && x-1!=7 && x-1 != 0 && y-1!=7 && y-1!=0)
 	{
 		//cout << "Bicie lewo gora" << endl;
 		//cout << x << " " << y << endl;
 		if (Bicie(x - 1, y - 1, LUp))
 		{
-			//cout << "Tak1" << endl;
+			cout << "Tak1" << endl;
 			return true;
 		}
 	}
 
-	if (Czy_Jest_W_Arenie(x - 1, y + 1) && x - 1 != (7 && 0) && y + 1 != (7 && 0))
+	if (Czy_Jest_W_Arenie(x - 1, y + 1) && x - 1 != 7 && x - 1 != 0 && y + 1 != 7 && y + 1 != 0)
 	{
 		//cout << "Bicie prawo gora" << endl;
 		if (Bicie(x - 1, y + 1, RUp))
 		{
-			//cout << "Tak2" << endl;
+			cout << "Tak2" << endl;
 			return true;
 		}
 	}
 
-	if (Czy_Jest_W_Arenie(x + 1, y + 1) && x + 1 != (7 && 0) && y + 1 != (7 && 0))
+	if (Czy_Jest_W_Arenie(x + 1, y + 1) && x + 1 != 7 && x + 1 != 0 && y + 1 != 7 && y + 1 != 0)
 	{
 		//cout << "Bicie prawo dol" << endl;
 		if (Bicie(x + 1, y + 1, RDown))
 		{
-			//cout << "Tak3" << endl;
+			cout << "Tak3" << endl;
 			return true;
 		}
 	}
 
-	if (Czy_Jest_W_Arenie(x + 1, y - 1) && x + 1 != (7 && 0) && y - 1 != (7 && 0))
+	if (Czy_Jest_W_Arenie(x + 1, y - 1) && x + 1 != 7 && x + 1 != 0 && y - 1 != 7 && y - 1 != 0)
 	{
 		//cout << "Bicie lewo dol" << endl;
 		if (Bicie(x + 1, y - 1, LDown))
 		{
-			//cout << "Tak4" << endl;
+			cout << "Tak4" << endl;
 			return true;
 		}
 	}
 
-	
+	return false;
 }
 
 bool Arena::Czy_Mozliwe_Bicie_Damka(int x1, int y1)
@@ -443,11 +443,11 @@ bool Arena::Czy_Mozliwe_Bicie_Damka(int x1, int y1)
 		x += LUp[0];
 		y += LUp[1];
 	}
-	if (x + LUp[0] != 7 && x + LUp[0] != 0 && y + LUp[1] != 7 && y + LUp[1] != 0 && Czy_Jest_W_Arenie(x+LUp[0],y+LUp[1]))
+	if (x + LUp[0] != 7 && x + LUp[0] != 0 && y + LUp[1] != 7 && y + LUp[1] != 0 && Czy_Jest_W_Arenie(x+LUp[0],y+LUp[1]) && !Czy_Jest_Pionek(x+LUp[0]-1,y+LUp[1]-1))
 	{
 		if (!Czy_Przyjaciel_Damki(x, y, x + LUp[0], y + LUp[1]) && Czy_Jest_Pionek(x + LUp[0], y + LUp[1]))
 		{
-			//cout << "Bicie lewo gora" << endl;
+			cout << "Bicie lewo gora" << endl;
 			return true;
 		}
 	}
@@ -458,11 +458,11 @@ bool Arena::Czy_Mozliwe_Bicie_Damka(int x1, int y1)
 		x += RUp[0];
 		y += RUp[1];
 	}	
-	if (x + RUp[0] != 7 && x + RUp[0] != 0 && y + RUp[1] != 7 && y + RUp[1] != 0 && Czy_Jest_W_Arenie(x + RUp[0], y + RUp[1]))
+	if (x + RUp[0] != 7 && x + RUp[0] != 0 && y + RUp[1] != 7 && y + RUp[1] != 0 && Czy_Jest_W_Arenie(x + RUp[0], y + RUp[1]) && !Czy_Jest_Pionek(x + RUp[0] - 1, y + RUp[1] + 1))
 	{
 		if (!Czy_Przyjaciel_Damki(x, y, x + RUp[0], y + RUp[1]) && Czy_Jest_Pionek(x + RUp[0], y + RUp[1]))
 		{
-			//cout << "Bicie prawo gora" << endl;
+			cout << "Bicie prawo gora" << endl;
 			return true;
 		}
 	}
@@ -475,11 +475,11 @@ bool Arena::Czy_Mozliwe_Bicie_Damka(int x1, int y1)
 		y += RDown[1];
 	}
 
-	if (x + RDown[0] != 7 && x + RDown[0] != 0 && y + RDown[1] != 7 && y + RDown[1] != 0 && Czy_Jest_W_Arenie(x + RDown[0], y + RDown[1]))
+	if (x + RDown[0] != 7 && x + RDown[0] != 0 && y + RDown[1] != 7 && y + RDown[1] != 0 && Czy_Jest_W_Arenie(x + RDown[0], y + RDown[1]) && !Czy_Jest_Pionek(x + RDown[0] + 1, y + RDown[1] + 1))
 	{
 		if (!Czy_Przyjaciel_Damki(x, y, x + RDown[0], y + RDown[1]) && Czy_Jest_Pionek(x + RDown[0], y + RDown[1]))
 		{
-			//cout << "Bicie prawo dol" << endl;
+			cout << "Bicie prawo dol" << endl;
 			return true;
 		}
 	}
@@ -490,11 +490,11 @@ bool Arena::Czy_Mozliwe_Bicie_Damka(int x1, int y1)
 		x += LDown[0];
 		y += LDown[1];
 	}
-	if (x + LDown[0] != 7 && x + LDown[0] != 0 && y + LDown[1] != 7 && y + LDown[1] != 0 && Czy_Jest_W_Arenie(x + LDown[0], y + LDown[1]))
+	if (x + LDown[0] != 7 && x + LDown[0] != 0 && y + LDown[1] != 7 && y + LDown[1] != 0 && Czy_Jest_W_Arenie(x + LDown[0], y + LDown[1]) && !Czy_Jest_Pionek(x + LDown[0] + 1, y + LDown[1] - 1))
 	{
 		if (!Czy_Przyjaciel_Damki(x, y, x + LDown[0], y + LDown[1]) && Czy_Jest_Pionek(x + LDown[0], y + LDown[1]))
 		{
-			//cout << "Bicie lewo dol" << endl;
+			cout << "Bicie lewo dol" << endl;
 			return true;
 		}
 	}

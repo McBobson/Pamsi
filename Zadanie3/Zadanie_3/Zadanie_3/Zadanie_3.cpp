@@ -7,7 +7,7 @@ using namespace std;
 int main()
 {
 	
-	Arena A(2);
+	Arena A;
 
 	cout << A;
 
@@ -141,6 +141,10 @@ int main()
 			//A.Czy_Mozliwe_Bicie(y1, a1);
 			//system("pause");
 
+			//A.Czy_Mozliwe_Bicie(y1, a1);
+			//A.Czy_Mozliwe_Bicie_Damka(y1, a1);
+			//system("pause");
+
 		} while (bicie>0 && (A.Czy_Mozliwe_Bicie(y1, a1) || A.Czy_Mozliwe_Bicie_Damka(y1,a1)));
 
 		if (punkty1 == 12) break;
@@ -258,11 +262,8 @@ int main()
 		cout << A;
 	}
 	
-
-
-	//A.Ekran_Koncowy(punkty1, punkty2, gracz);
+	A.Ekran_Koncowy(punkty1, punkty2, gracz);
 	
-
 
 //A.Czy_Mozliwe_Bicie_Damka(4, 4);
 
