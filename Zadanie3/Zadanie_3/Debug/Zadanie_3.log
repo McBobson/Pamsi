@@ -1,5 +1,0 @@
-﻿  Zadanie_3.cpp
-f:\projekty\zadanie_3\zadanie_3\zadanie_3.cpp(38): warning C4101: "b1": lokalna zmienna, do której nie istnieje odwołanie
-f:\projekty\zadanie_3\zadanie_3\arena.h(367): warning C4715: "Arena::Czy_Mozliwe_Bicie”: niewszystkie ścieżki kodu zwracają wartość
-f:\projekty\zadanie_3\zadanie_3\arena.h(487): warning C4715: "Arena::Przesun_Pionek”: niewszystkie ścieżki kodu zwracają wartość
-  Zadanie_3.vcxproj -> F:\Projekty\Zadanie_3\Debug\Zadanie_3.exe
