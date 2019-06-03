@@ -40,7 +40,10 @@ int main()
 	int wybor = 0;
 
 	cout << "WSZYSTKIE GRAFIKI ORAZ UTWORY MUZYCZNE ZOSTAlY UZYTE NIE W CELACH KOMERCYJNYCH TYLKO DO UZYTKU PRYWATNEGO" << endl;
-	cout << "SA ONE ASPEKTEM HUMORYSTYCZNYM ORAZ UROZMAICAJA SZATE AUDIOWIZUALNA PROGRAMU" << endl;
+	cout << "SA ONE ASPEKTEM HUMORYSTYCZNYM ORAZ UROZMAICAJA SZATE AUDIOWIZUALNA PROGRAMU" << endl<<endl;
+	cout << "INSTRUKCJA DZIALANIA PROGRAMU!" << endl<<endl;
+	cout << "LEWYM PRZYCISKIEM MYSZY WYBIERZ PIONKA KTORYM CHCESZ SIE PORUSZYC" << endl << endl;;
+	cout << "KLIKNIJ PRAWYM PRZYCISKIEM MIEJSCE NA KTORE CHCESZ SIE PRZESUNAC (GDY CHCESZ ZBIC PIONKA KLIKNIJ PIONKA KTOREGO CHCESZ ZBIC)" << endl;
 	Sleep(5000);
 
 	system("cls");
@@ -389,7 +392,7 @@ void VsAI(sf::SoundBuffer BuforB, Ekran& E, bool& wygrana, bool& przegrana)
 						int punktypoprz = AI.Zwroc_Punkty();
 
 						AI.Koncowy_Ruch(A);
-
+	
 						//if (A.Czy_Mozliwy_Ruch(AI.TabKoniec[0], AI.TabKoniec[1], gracz))
 						//{
 						A.Przesun_Pionek(AI.TabKoniec[0], AI.TabKoniec[1], AI.TabKoniec[2], AI.TabKoniec[3], gracz, E);
