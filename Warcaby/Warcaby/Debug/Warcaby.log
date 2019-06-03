@@ -1,0 +1,52 @@
+﻿  main.cpp
+c:\users\bobson\desktop\warcaby\warcaby\wyswietlanie.h(91): warning C4305: "argument": obcięcie z "double" do "float"
+c:\users\bobson\desktop\warcaby\warcaby\wyswietlanie.h(94): warning C4305: "argument": obcięcie z "double" do "float"
+c:\users\bobson\desktop\warcaby\warcaby\wyswietlanie.h(97): warning C4305: "argument": obcięcie z "double" do "float"
+c:\users\bobson\desktop\warcaby\warcaby\wyswietlanie.h(100): warning C4305: "argument": obcięcie z "double" do "float"
+c:\users\bobson\desktop\warcaby\warcaby\wyswietlanie.h(105): warning C4305: "argument": obcięcie z "double" do "float"
+c:\users\bobson\desktop\warcaby\warcaby\wyswietlanie.h(108): warning C4305: "argument": obcięcie z "double" do "float"
+c:\users\bobson\desktop\warcaby\warcaby\wyswietlanie.h(111): warning C4305: "argument": obcięcie z "double" do "float"
+c:\users\bobson\desktop\warcaby\warcaby\wyswietlanie.h(114): warning C4305: "argument": obcięcie z "double" do "float"
+c:\users\bobson\desktop\warcaby\warcaby\wyswietlanie.h(119): warning C4305: "argument": obcięcie z "double" do "float"
+c:\users\bobson\desktop\warcaby\warcaby\wyswietlanie.h(122): warning C4305: "argument": obcięcie z "double" do "float"
+c:\users\bobson\desktop\warcaby\warcaby\wyswietlanie.h(125): warning C4305: "argument": obcięcie z "double" do "float"
+c:\users\bobson\desktop\warcaby\warcaby\wyswietlanie.h(128): warning C4305: "argument": obcięcie z "double" do "float"
+c:\users\bobson\desktop\warcaby\warcaby\wyswietlanie.h(149): warning C4305: "argument": obcięcie z "double" do "float"
+c:\users\bobson\desktop\warcaby\warcaby\wyswietlanie.h(152): warning C4305: "argument": obcięcie z "double" do "float"
+c:\users\bobson\desktop\warcaby\warcaby\wyswietlanie.h(155): warning C4305: "argument": obcięcie z "double" do "float"
+c:\users\bobson\desktop\warcaby\warcaby\wyswietlanie.h(158): warning C4305: "argument": obcięcie z "double" do "float"
+c:\users\bobson\desktop\warcaby\warcaby\wyswietlanie.h(163): warning C4305: "argument": obcięcie z "double" do "float"
+c:\users\bobson\desktop\warcaby\warcaby\wyswietlanie.h(166): warning C4305: "argument": obcięcie z "double" do "float"
+c:\users\bobson\desktop\warcaby\warcaby\wyswietlanie.h(169): warning C4305: "argument": obcięcie z "double" do "float"
+c:\users\bobson\desktop\warcaby\warcaby\wyswietlanie.h(172): warning C4305: "argument": obcięcie z "double" do "float"
+c:\users\bobson\desktop\warcaby\warcaby\wyswietlanie.h(177): warning C4305: "argument": obcięcie z "double" do "float"
+c:\users\bobson\desktop\warcaby\warcaby\wyswietlanie.h(180): warning C4305: "argument": obcięcie z "double" do "float"
+c:\users\bobson\desktop\warcaby\warcaby\wyswietlanie.h(183): warning C4305: "argument": obcięcie z "double" do "float"
+c:\users\bobson\desktop\warcaby\warcaby\wyswietlanie.h(186): warning C4305: "argument": obcięcie z "double" do "float"
+c:\users\bobson\desktop\warcaby\warcaby\arena.h(1080): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+c:\users\bobson\desktop\warcaby\warcaby\arena.h(1086): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+c:\users\bobson\desktop\warcaby\warcaby\arena.h(1092): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+c:\users\bobson\desktop\warcaby\warcaby\arena.h(1098): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+c:\users\bobson\desktop\warcaby\warcaby\arena.h(1104): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+c:\users\bobson\desktop\warcaby\warcaby\arena.h(1110): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+c:\users\bobson\desktop\warcaby\warcaby\arena.h(1116): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+c:\users\bobson\desktop\warcaby\warcaby\arena.h(1122): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+c:\users\bobson\desktop\warcaby\warcaby\arena.h(1128): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+c:\users\bobson\desktop\warcaby\warcaby\arena.h(1134): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+c:\users\bobson\desktop\warcaby\warcaby\arena.h(1140): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+c:\users\bobson\desktop\warcaby\warcaby\arena.h(1146): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+c:\users\bobson\desktop\warcaby\warcaby\arena.h(1152): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+c:\users\bobson\desktop\warcaby\warcaby\arena.h(1159): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+c:\users\bobson\desktop\warcaby\warcaby\arena.h(1165): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+c:\users\bobson\desktop\warcaby\warcaby\arena.h(1171): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+c:\users\bobson\desktop\warcaby\warcaby\arena.h(1177): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+c:\users\bobson\desktop\warcaby\warcaby\arena.h(1183): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+c:\users\bobson\desktop\warcaby\warcaby\arena.h(1189): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+c:\users\bobson\desktop\warcaby\warcaby\arena.h(1195): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+c:\users\bobson\desktop\warcaby\warcaby\arena.h(1201): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+c:\users\bobson\desktop\warcaby\warcaby\arena.h(1207): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+c:\users\bobson\desktop\warcaby\warcaby\arena.h(1213): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+c:\users\bobson\desktop\warcaby\warcaby\arena.h(1219): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+c:\users\bobson\desktop\warcaby\warcaby\main.cpp(224): warning C4715: "ZwrocY”: niewszystkie ścieżki kodu zwracają wartość
+c:\users\bobson\desktop\warcaby\warcaby\main.cpp(243): warning C4715: "ZwrocX”: niewszystkie ścieżki kodu zwracają wartość
+  Warcaby.vcxproj -> C:\Users\Bobson\Desktop\Warcaby\Debug\Warcaby.exe
